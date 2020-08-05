@@ -14,8 +14,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/clientes', (req, res) => {
-    console.log('POST /', req.body)
-    res.send('OK')
+    console.log('POST /clientes', req.body)
+    console.log("tem email? ", !req.body['email'])
+    if(!req.body['email']){
+        res.status(400).send("O email é obrigatório.")
+    } else {
+        res.send('OK')
+    }
 })
 
 app.listen(port, () => {
