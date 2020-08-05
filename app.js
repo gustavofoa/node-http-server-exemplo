@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     console.log('GET /')
@@ -10,8 +13,8 @@ app.get('/', (req, res) => {
     res.status(307).send()
 })
 
-app.post('/', (req, res) => {
-    console.log('POST /')
+app.post('/clientes', (req, res) => {
+    console.log('POST /', req.body)
     res.send('OK')
 })
 
